@@ -1,0 +1,21 @@
+{
+  "name": "django-drf-next",
+  "version": "1.0.0",
+  "repository": "https://github.com/tarikkavaz/Django-DRF-Next.git",
+  "author": "Tarik Kavaz <tarikkavaz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "scripts": {
+    "_init-venv": "python3 -m venv backend/venv",
+    "_activate-venv": "source backend/venv/bin/activate",
+    "_requirements": "pip install -r backend/requirements.txt",
+    "_migrations": "python backend/manage.py makemigrations && python backend/manage.py migrate",
+    "_superuser": "python backend/manage.py createsuperuser",
+    "_runserver": "python backend/manage.py runserver",
+    "_init-frontend": "cd frontend && yarn",
+    "setup": "yarn _init-venv && yarn _activate-venv && yarn _requirements && yarn _migrations && yarn _superuser && yarn _init-frontend",
+    "dev": "concurrently \"yarn _activate-venv && python backend/manage.py runserver\" \"cd frontend && yarn dev\""
+  }
+}
